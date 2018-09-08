@@ -13,12 +13,12 @@ import java.io.IOException;
  */
 
 public class MapOutputValue implements Writable {
-    public IntWritable getTermFrequency() {
-        return termFrequency;
+    public IntWritable getWordFrequency() {
+        return wordFrequency;
     }
 
-    public void setTermFrequency(IntWritable termFrequency) {
-        this.termFrequency = termFrequency;
+    public void setWordFrequency(IntWritable wordFrequency) {
+        this.wordFrequency = wordFrequency;
     }
 
     public Text getDocId() {
@@ -29,27 +29,27 @@ public class MapOutputValue implements Writable {
         this.docId = docId;
     }
 
-    private IntWritable termFrequency;
+    private IntWritable wordFrequency;
     private Text docId;
 
     public MapOutputValue() {
         this(new IntWritable(), new Text());
     }
 
-    public MapOutputValue(IntWritable termFrequency, Text docId) {
-        this.termFrequency = termFrequency;
+    public MapOutputValue(IntWritable wordFrequency, Text docId) {
+        this.wordFrequency = wordFrequency;
         this.docId = docId;
     }
 
     @Override
     public void write(DataOutput dataOutput) throws IOException {
         docId.write(dataOutput);
-        termFrequency.write(dataOutput);
+        wordFrequency.write(dataOutput);
     }
 
     @Override
     public void readFields(DataInput dataInput) throws IOException {
         docId.readFields(dataInput);
-        termFrequency.readFields(dataInput);
+        wordFrequency.readFields(dataInput);
     }
 }
