@@ -138,7 +138,7 @@ public class Project1 extends Configured implements Tool {
         weightedInvertedIndexJob.setMapOutputKeyClass(MapOutputKey.class);
         weightedInvertedIndexJob.setMapOutputValueClass(MapOutputValue.class);
         weightedInvertedIndexJob.setGroupingComparatorClass (GroupComparator.class);
-        weightedInvertedIndexJob.setNumReduceTasks(3);
+        weightedInvertedIndexJob.setNumReduceTasks(Integer.parseInt(args[2]));
         weightedInvertedIndexJob.setOutputKeyClass(Text.class);
         weightedInvertedIndexJob.setOutputValueClass(DoubleWritable.class);
         FileInputFormat.addInputPath(weightedInvertedIndexJob, inputPath);
